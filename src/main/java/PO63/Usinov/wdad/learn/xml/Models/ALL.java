@@ -44,5 +44,4 @@ public class ALL {
     public void setRights(String value) {
         this.rights = value;
     }
-
 }
