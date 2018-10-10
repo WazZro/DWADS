@@ -15,7 +15,6 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlRootElement(name = "privileges")
 public class Privileges {
-
     @XmlElements({
         @XmlElement(name = "ALL", required = true, type = ALL.class),
         @XmlElement(name = "user", required = true, type = User.class)

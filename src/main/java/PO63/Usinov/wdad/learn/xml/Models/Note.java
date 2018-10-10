@@ -147,4 +147,13 @@ public class Note {
         this.cdate = value;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+
+        if (obj == null || obj.getClass() != this.getClass()) return false;
+
+        Note o = (Note) obj;
+        return title.equals(o.title) && cdate.equals(o.cdate) && text.equals(o.text);
+    }
 }

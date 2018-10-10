@@ -13,7 +13,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "")
 @XmlRootElement(name = "user")
 public class User {
-
     @XmlAttribute(name = "name")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String name;
@@ -100,4 +99,13 @@ public class User {
         this.rights = value;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+
+        if (obj == null || obj.getClass() != this.getClass()) return false;
+
+        User u = (User) obj;
+        return u.name.equals(name) && u.mail.equals(mail);
+    }
 }

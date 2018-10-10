@@ -12,7 +12,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlType(name = "")
 @XmlRootElement(name = "ALL")
 public class ALL {
-
     @XmlAttribute(name = "rights")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String rights;
