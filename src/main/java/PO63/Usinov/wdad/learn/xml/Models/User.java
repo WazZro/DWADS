@@ -106,6 +106,6 @@ public class User {
         if (obj == null || obj.getClass() != this.getClass()) return false;
 
         User u = (User) obj;
-        return u.name.equals(name) && u.mail.equals(mail);
+        return name.equals(u.name) && mail.equals(u.mail);
     }
 }

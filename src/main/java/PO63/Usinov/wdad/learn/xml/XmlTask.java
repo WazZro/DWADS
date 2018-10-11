@@ -1,7 +1,6 @@
 package PO63.Usinov.wdad.learn.xml;
 
 import PO63.Usinov.wdad.learn.xml.Models.*;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -16,13 +15,28 @@ public class XmlTask {
     private boolean isLoaded;
     private Notes notes;
 
+    public Path getFile() {
+        return file;
+    }
+
+    public boolean isLoaded() {
+        return isLoaded;
+    }
+
+    public Notes getNotes() {
+        return notes;
+    }
+
     public XmlTask(String path, Class c) throws IOException {
         this.file = Paths.get(path);
         var reader = new StringReader(new String(Files.readAllBytes(file)));
 
+
         try {
-            var notes = (Notes) deserialize(reader, Notes.class);
+            this.notes = (Notes) deserialize(reader, Notes.class);
+            this.isLoaded = true;
         } catch (JAXBException e) {
+            isLoaded = false;
             e.printStackTrace();
         }
     }
@@ -73,6 +87,8 @@ public class XmlTask {
                 user.setRights("RW");
                 break;
         }
+
+        System.out.println("----------------------" + user.getRights());
 
         if (newRight > 0) {
             for (var note : notes) {
