@@ -22,7 +22,7 @@ public class Note {
     @XmlElement(required = true)
     protected String text;
     @XmlElement(required = true)
-    protected Owner owner;
+    protected User owner;
     @XmlElement(required = true)
     protected Privileges privileges;
     protected String cdate;
@@ -80,10 +80,10 @@ public class Note {
      * 
      * @return
      *     possible object is
-     *     {@link Owner }
+     *     {@link User }
      *     
      */
-    public Owner getOwner() {
+    public User getOwner() {
         return owner;
     }
 
@@ -92,10 +92,10 @@ public class Note {
      * 
      * @param value
      *     allowed object is
-     *     {@link Owner }
+     *     {@link User }
      *     
      */
-    public void setOwner(Owner value) {
+    public void setOwner(User value) {
         this.owner = value;
     }
 
@@ -145,6 +145,10 @@ public class Note {
      */
     public void setCdate(String value) {
         this.cdate = value;
+    }
+
+    public void update(String text) {
+        this.text = text;
     }
 
     @Override

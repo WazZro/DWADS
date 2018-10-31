@@ -46,7 +46,7 @@ public class Privileges {
      */
     public List<Object> getALLOrUser() {
         if (allOrUser == null) {
-            allOrUser = new ArrayList<Object>();
+            allOrUser = new ArrayList<>();
         }
         return this.allOrUser;
     }

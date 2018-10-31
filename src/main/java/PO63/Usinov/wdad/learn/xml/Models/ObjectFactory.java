@@ -28,18 +28,6 @@ public class ObjectFactory {
     public ObjectFactory() {
     }
 
-    /**
-     * Create an instance of {@link Owner }
-     * 
-     */
-    public Owner createOwner() {
-        return new Owner();
-    }
-
-    /**
-     * Create an instance of {@link Note }
-     * 
-     */
     public Note createNote() {
         return new Note();
     }

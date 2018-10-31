@@ -12,18 +12,18 @@ import java.nio.file.Paths;
 public class TestXmlTask {
     public static void main(String[] args) {
         System.setProperty("javax.xml.accessExternalDTD", "all");
-        Path path = Paths.get("/home/wazzro/IdeaProjects/DWADS/src/main/java/PO63/Usinov/wdad/learn/xml/test.xml");
+        Path path = Paths.get("/home/lirael/IdeaProjects/DWADS/src/main/java/PO63/Usinov/wdad/learn/xml/test.xml");
         System.out.println(path);
         System.out.println(Files.exists(path));
         try {
-            XmlTask loader = new XmlTask("/home/wazzro/IdeaProjects/DWADS/src/main/java/PO63/Usinov/wdad/learn/xml/test.xml", Notes.class);
+            XmlTask loader = new XmlTask("/home/lirael/IdeaProjects/DWADS/src/main/java/PO63/Usinov/wdad/learn/xml/test.xml", Notes.class);
             var notes = loader.getNotes();
             out(notes);
 
             User u = new User();
             u.setName("gopnik");
             u.setMail("gop@gop.ru");
-            loader.setPrivileges("Note2", u, 3);
+            loader.setPrivileges("Note2", u, 1);
 
             out(notes);
 

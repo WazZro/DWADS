@@ -16,7 +16,7 @@
         <privileges>
             <user name="keksik" mail="kekes@kek.omnom" rights="R"/>
             <user name="mamanya" mail="mamkatvoya@228.net" rights="RW"/>
-            <user name="gopnik" mail="gop@gop.ru" rights="RW"/>
+            <user name="gopnik" mail="gop@gop.ru" rights="R"/>
         </privileges>
         <cdate>07-09-1998</cdate>
     </note>
