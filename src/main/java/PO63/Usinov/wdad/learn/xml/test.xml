@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<notes>
+    <note>
+        <title>Note1</title>
+        <text>Im note 1!</text>
+        <owner name="WazZro" mail="kekes@kek.omnon"/>
+        <privileges>
+            <ALL rights="R"/>
+        </privileges>
+        <cdate>05-09-1998</cdate>
+    </note>
+    <note>
+        <title>Note2</title>
+        <text>Im note 2!</text>
+        <owner name="nagibator228" mail="mamkatvoya@228.net"/>
+        <privileges>
+            <user name="keksik" mail="kekes@kek.omnom" rights="R"/>
+            <user name="mamanya" mail="mamkatvoya@228.net" rights="RW"/>
+            <user name="gopnik" mail="gop@gop.ru" rights="R"/>
+        </privileges>
+        <cdate>07-09-1998</cdate>
+    </note>
+</notes>
