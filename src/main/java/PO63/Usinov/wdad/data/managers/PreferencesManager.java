@@ -9,99 +9,143 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class PreferencesManager
-{
+public class PreferencesManager {
+    private String filename;
+    private Properties properties;
     protected static Appconfig rootElement;
 
     protected final static PreferencesManager instance = new PreferencesManager();
 
-    private static Object loadObjectFromXML(String filename, Class c) throws Exception
-    {
+    public static PreferencesManager getInstance() {
+        return instance;
+    }
+
+    public static Object deserialize(String filename, Class c) throws Exception {
         StringReader sr = new StringReader(new String(Files.readAllBytes(Paths.get(filename))));
         JAXBContext context = JAXBContext.newInstance(c);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        return (Object)unmarshaller.unmarshal(sr);
+        instance.filename = filename;
+        return unmarshaller.unmarshal(sr);
     }
 
-    private static void saveObjectToXML(String filename, Class c, Object obj) throws Exception
-    {
+    public static void serialize(String filename, Class c, Object obj) throws Exception {
         JAXBContext context = JAXBContext.newInstance(c);
         Marshaller marshaller = context.createMarshaller();
         marshaller.marshal(obj, new FileOutputStream(filename));
     }
 
-    public void readXml(String filename) throws Exception
-    {
-        rootElement = (Appconfig) loadObjectFromXML(filename, Rmi.class);
+    public void read(String filename) throws Exception {
+        rootElement = (Appconfig) deserialize(filename, Appconfig.class);
+        properties = new Properties(rootElement);
     }
 
-    public Rmi getRmi()
-    {
+    public void setProperty(String key, String value) throws Exception {
+        properties.setProperty(key, value);
+        serialize(filename, Appconfig.class, rootElement);
+    }
+
+    public String getProperty(String key) {
+        return properties.getProperty(key);
+    }
+
+    public void setProperties(Properties prop) {
+        this.properties = prop;
+    }
+
+    public Properties getProperties() {
+        return properties;
+    }
+
+    public void addBindedObject(String name, String className) {
+        var obj = new Bindedobject();
+        obj.name = name;
+        obj.clazz = className;
+        var array = rootElement.rmi.server.registryOrBindedobject;
+        array.add(obj);
+    }
+
+    public void removeBindedObject(String name) {
+        var array = rootElement.rmi.server.registryOrBindedobject;
+        var i = array.listIterator();
+        while (i.hasNext()) {
+            var o = i.next();
+            if (o instanceof Registry)
+                continue;
+            var bo = (Bindedobject) o;
+            if (bo.name.equals(name)) {
+                i.remove();
+                break;
+            }
+        }
+    }
+
+    @Deprecated
+    public Rmi getRmi() {
         return rootElement.rmi;
     }
 
-    public void setRmi(Rmi rmi)
-    {
+    @Deprecated
+    public void setRmi(Rmi rmi) {
         rootElement.rmi = rmi;
     }
 
-    public Server getServer()
-    {
+    @Deprecated
+    public Server getServer() {
         return rootElement.rmi.server;
     }
 
-    public void setServer(Server server)
-    {
+    @Deprecated
+    public void setServer(Server server) {
         rootElement.rmi.server = server;
     }
 
-    public Client getClient()
-    {
+    @Deprecated
+    public Client getClient() {
         return rootElement.rmi.client;
     }
 
-    public void setClient(Client client)
-    {
+    @Deprecated
+    public void setClient(Client client) {
         rootElement.rmi.client = client;
     }
 
-    public void setClassprovider(String classprovider)
-    {
+    @Deprecated
+    public void setClassprovider(String classprovider) {
         rootElement.rmi.classprovider = classprovider;
     }
 
-    public String getClassprovider()
-    {
+    @Deprecated
+    public String getClassprovider() {
         return rootElement.rmi.classprovider;
     }
 
-    public List<Object> getRegistryOrBindedObject()
-    {
+    @Deprecated
+    public List<Object> getRegistryOrBindedObject() {
         return rootElement.rmi.server.registryOrBindedobject;
     }
 
-    public void setRegistryOrBindedObject(List<Object> objects)
-    {
+    @Deprecated
+    public void setRegistryOrBindedObject(List<Object> objects) {
         rootElement.rmi.server.registryOrBindedobject = objects;
     }
 
-    public void setPolicyPath(String policyPath)
-    {
+    @Deprecated
+    public void setPolicyPath(String policyPath) {
         rootElement.rmi.client.policypath = policyPath;
     }
 
-    public String getPolicyPath()
-    {
+    @Deprecated
+    public String getPolicyPath() {
         return rootElement.rmi.client.policypath;
     }
 
-    public void setUseCodeBaseOnly(String useCodeBaseOnly)
-    {
+    @Deprecated
+    public void setUseCodeBaseOnly(String useCodeBaseOnly) {
         rootElement.rmi.client.usecodebaseonly = useCodeBaseOnly;
     }
 
-    public String getUseCodeBaseOnly()
-    {
+    @Deprecated
+    public String getUseCodeBaseOnly() {
         return rootElement.rmi.client.usecodebaseonly;
     }
 }

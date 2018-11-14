@@ -73,4 +73,14 @@ public class Bindedobject {
         this.clazz = value;
     }
 
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) return true;
+
+        if (obj == null || obj.getClass() != this.getClass()) return false;
+
+        Bindedobject bo = (Bindedobject) obj;
+        return name.equals(bo.name) && clazz.equals(bo.clazz);
+    }
 }

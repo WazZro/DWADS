@@ -52,7 +52,7 @@ public class Server {
      */
     public List<Object> getRegistryOrBindedobject() {
         if (registryOrBindedobject == null) {
-            registryOrBindedobject = new ArrayList<Object>();
+            registryOrBindedobject = new ArrayList<>();
         }
         return this.registryOrBindedobject;
     }
