@@ -55,6 +55,14 @@ public class XmlTask {
         marshaller.marshal(o, Files.newBufferedWriter(path));
     }
 
+    public void save() throws IOException {
+        try {
+            serialize(notes, file, Notes.class);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+    }
+
     public String getNoteText(User owner, String title) {
         var note = this.notes.find(owner, title);
 

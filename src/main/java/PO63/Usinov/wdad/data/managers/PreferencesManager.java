@@ -1,5 +1,7 @@
 package PO63.Usinov.wdad.data.managers;
 
+import PO63.Usinov.wdad.utils.PreferencesManagerConstants;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
@@ -77,6 +79,10 @@ public class PreferencesManager {
                 break;
             }
         }
+    }
+
+    public boolean isCreateRegistry() {
+        return getProperty(PreferencesManagerConstants.CREATE_REGISTRY).equals("yes");
     }
 
     @Deprecated

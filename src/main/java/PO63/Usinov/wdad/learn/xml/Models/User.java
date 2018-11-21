@@ -8,11 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 @XmlRootElement(name = "user")
-public class User {
+public class User implements Serializable {
     @XmlAttribute(name = "name")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String name;
@@ -25,11 +26,9 @@ public class User {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getName() {
         return name;
@@ -37,11 +36,9 @@ public class User {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -49,11 +46,9 @@ public class User {
 
     /**
      * Gets the value of the mail property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getMail() {
         return mail;
@@ -61,11 +56,9 @@ public class User {
 
     /**
      * Sets the value of the mail property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setMail(String value) {
         this.mail = value;
@@ -73,11 +66,9 @@ public class User {
 
     /**
      * Gets the value of the rights property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getRights() {
         if (rights == null) {
@@ -89,11 +80,9 @@ public class User {
 
     /**
      * Sets the value of the rights property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setRights(String value) {
         this.rights = value;

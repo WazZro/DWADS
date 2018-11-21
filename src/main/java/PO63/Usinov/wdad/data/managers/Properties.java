@@ -1,5 +1,7 @@
 package PO63.Usinov.wdad.data.managers;
 
+import PO63.Usinov.wdad.utils.PreferencesManagerConstants;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.NoSuchElementException;
 
@@ -18,6 +20,18 @@ public class Properties {
     }
 
     public void setProperty(String key, String value) {
+        switch (key) {
+            case PreferencesManagerConstants.CREATE_REGISTRY:
+                ((Registry) appconfig.rmi.server.registryOrBindedobject.get(0)).createregistry = value;
+                return;
+            case PreferencesManagerConstants.REGISTRY_ADDRESS:
+                ((Registry) appconfig.rmi.server.registryOrBindedobject.get(0)).registryaddress = value;
+                return;
+            case PreferencesManagerConstants.REGISTRY_PORT:
+                ((Registry) appconfig.rmi.server.registryOrBindedobject.get(0)).registryport = value;
+                return;
+        }
+
         String[] path = key.split("\\.");
 
         if (path[0].equalsIgnoreCase("appconfig")) {
@@ -34,6 +48,15 @@ public class Properties {
     }
 
     public String getProperty(String key) {
+        switch (key) {
+            case PreferencesManagerConstants.CREATE_REGISTRY:
+                return ((Registry) appconfig.rmi.server.registryOrBindedobject.get(0)).createregistry;
+            case PreferencesManagerConstants.REGISTRY_ADDRESS:
+                return ((Registry) appconfig.rmi.server.registryOrBindedobject.get(0)).registryaddress;
+            case PreferencesManagerConstants.REGISTRY_PORT:
+                return ((Registry) appconfig.rmi.server.registryOrBindedobject.get(0)).registryport;
+        }
+
         String[] path = key.split("\\.");
 
         if (path[0].equalsIgnoreCase("appconfig")) {

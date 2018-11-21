@@ -7,11 +7,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 @XmlRootElement(name = "ALL")
-public class ALL {
+public class ALL implements Serializable {
     @XmlAttribute(name = "rights")
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     protected String rights;
