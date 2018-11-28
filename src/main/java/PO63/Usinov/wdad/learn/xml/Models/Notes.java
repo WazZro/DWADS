@@ -1,5 +1,6 @@
 package PO63.Usinov.wdad.learn.xml.Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -12,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
         "note"
 })
 @XmlRootElement(name = "notes")
-public class Notes {
+public class Notes implements Serializable {
 
     protected List<Note> note;
 

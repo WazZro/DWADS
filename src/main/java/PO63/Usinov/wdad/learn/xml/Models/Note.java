@@ -5,6 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.io.Serializable;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
@@ -15,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
     "cdate"
 })
 @XmlRootElement(name = "note")
-public class Note {
+public class Note implements Serializable {
 
     @XmlElement(required = true)
     protected String title;
